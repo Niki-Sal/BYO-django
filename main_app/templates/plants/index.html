@@ -7,11 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Plants</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+    <!-- ADD MATERIALUI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <h1>All Plants I have: </h1>
+    <h3>All Plants I have: </h3>
     <hr/>
-    <a href="/plants/create">Add a New Plant!</a>
+    <a class="update btn" href="/plants/create">Add a New Plant</a>
     <hr />
     {% for plant in plants %}
       <a href="/plants/{{plant.id}}">
@@ -19,5 +24,6 @@
       </a>
         <hr/>
     {% endfor %}
+    <a href="/">Home page</a>
 </body>
 </html>

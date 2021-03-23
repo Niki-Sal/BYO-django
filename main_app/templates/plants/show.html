@@ -23,6 +23,7 @@
              <p>Care Instructions: {{ plant.instruction }}</p>
            </div>
          </div>
+         <a href="/plants">Back to all plant lists</a>
        </div>
        <div class="col s6">
         <form method="post" action = "{% url 'add_gardening' plant.id %}">
@@ -42,6 +43,7 @@
               </tr>
             {% endfor %}
           </tbody>
+         
         </table>
       </div>
 
