@@ -20,7 +20,7 @@ class PlantUpdate(UpdateView):
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.save()
-        return HttpResponseRedirect('/plants/' +str(self.object.pk))
+        return HttpResponseRedirect('/plants/' + str(self.object.pk))
 
 class PlantDelete(DeleteView):
     model = Plant
@@ -42,3 +42,11 @@ def plants_show(request, plant_id):
         'plant': plant,
         'gardening_form': gardening_form
     })
+
+def add_gardening(request, pk):
+  form = GardeningForm(request.POST)
+  if form.is_valid():
+    new_gardening= form.save(commit = False)
+    new_gardening.plant_id = pk 
+    new_gardening.save()
+  return redirect('plants_show', plant_id = pk)

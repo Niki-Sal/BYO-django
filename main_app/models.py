@@ -16,7 +16,7 @@ CARES = (
     ('P', 'Change plant pot')
 )
 
-class gardening(models.Model):
+class Gardening(models.Model):
 
     date = models.DateField()
     care = models.CharField(
