@@ -6,16 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My plants</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <!-- ADD MATERIALUI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
-    <h1>My Plant:</h1>
-    <hr/>
+    <nav>
+      <a class="navbar" href="/"> My Plants</a>
+    </nav>
+    <div class="center-container">
+      <h3>Update this Plant</h3>
+      <a class="update btn" href="/plants">Back to Plants lists</a>
+    </div>
+   
     <form action="" method="post">
       {% csrf_token %}
       <table>
       {{ form.as_table }}
       </table>
-      <input type="submit" value="Submit!">
+      <div class="center-container">
+        <input class="update btn" type="submit" value="Submit!">
+      </div>
     </form>
 
   </body>

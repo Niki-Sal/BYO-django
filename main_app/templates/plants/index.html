@@ -14,16 +14,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <h3>All Plants I have: </h3>
-    <hr/>
-    <a class="update btn" href="/plants/create">Add a New Plant</a>
-    <hr />
-    {% for plant in plants %}
-      <a href="/plants/{{plant.id}}">
-        <p>{{ plant.name }} | Type: {{ plant.plant }}</p>
-      </a>
-        <hr/>
-    {% endfor %}
-    <a href="/">Home page</a>
+    <nav>
+      <a class="navbar" href="/"> My Plants</a>
+    </nav>
+    <div class="center-container">
+      <h4>All My Plants </h4>
+      <a class="update btn" href="/plants/create">Add a New Plant</a>
+    </div>
+   
+    <div class="center-container-border">
+      {% for plant in plants %}
+        <a href="/plants/{{plant.id}}">
+          <p>{{ plant.name }} | Type: {{ plant.plant }}</p>
+        </a>
+      
+      {% endfor %}
+    </div>
+    
 </body>
 </html>

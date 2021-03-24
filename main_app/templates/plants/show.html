@@ -13,42 +13,52 @@
 
   </head>
   <body>
-      <h2>{{ plant.name }}'s details</h2>
-      <div class="row">
-        <div class="col s6">
-         <div class="card">
-           <div class="card-content">
-             <span class="card-title">{{ cat.name }}</span>
-             <p>Plant Type: {{ plant.plant }}</p>
-             <p>Care Instructions: {{ plant.instruction }}</p>
-           </div>
-         </div>
-         <a href="/plants">Back to all plant lists</a>
-       </div>
-       <div class="col s6">
-        <form method="post" action = "{% url 'add_gardening' plant.id %}">
-          {% csrf_token %}
-          {{ gardening_form.as_p }}
-          <input type="submit" class="btn" value="Add Caring">
-        </form>
-        <table class="striped">
-          <thead>
-            <tr><th>Date</th><th>Care</th></tr>
-          </thead>
-          <tbody>
-            {% for gardening in plant.gardening_set.all %}
-              <tr>
-                <td>{{gardening.date}}</td>
-                <td>{{gardening.get_care_display}}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-         
-        </table>
+      <nav>
+        <a class="navbar" href="/"> My Plants</a>
+      </nav>
+      <div class="center-container">
+        <h3 >{{ plant.name }}'s details</h3>
+        <a class="update btn" href="/plants">Back to Plants lists</a>
       </div>
+      <div class="center-container-border">
 
-      <a class="update btn" href="{% url 'plants_update' plant.id %}">UPDATE</a> |
-      <a class="delete btn" href="{% url 'plants_delete' plant.id %}">DELETE</a>
+        <div class="row">
+          <div class="col s6">
+           <div class="card">
+             <div class="card-content">
+               <span class="card-title">{{ cat.name }}</span>
+               <p>Plant Type: {{ plant.plant }}</p>
+               <p>Care Instructions: {{ plant.instruction }}</p>
+             </div>
+            </div>
+            <a class="update btn" href="{% url 'plants_update' plant.id %}">UPDATE</a> |
+            <a class="delete btn" href="{% url 'plants_delete' plant.id %}">DELETE</a>
+         </div>
+         <div class="col s6">
+          <form method="post" action = "{% url 'add_gardening' plant.id %}">
+            {% csrf_token %}
+            {{ gardening_form.as_p }}
+            <input type="submit" class="btn" value="Add Caring">
+          </form>
+          <table class="striped">
+            <thead>
+              <tr><th>Date</th><th>Care</th></tr>
+            </thead>
+            <tbody>
+              {% for gardening in plant.gardening_set.all %}
+                <tr>
+                  <td>{{gardening.date}}</td>
+                  <td>{{gardening.get_care_display}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+           
+          </table>
+        </div>
+  
+        
+
+      </div>
 
       <script>  
         var dateEl = document.getElementById('id_date');
